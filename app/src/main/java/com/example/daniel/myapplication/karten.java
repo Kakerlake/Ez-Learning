@@ -24,7 +24,7 @@ public class karten extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatigcally handle clicks on othe Home/Up button, so long
+        // automatig cally handle clicks on othe Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
