@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class Neu extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void neueKarte(){
+    public void neueKarte(View arg0){
         setDeutsch(eingabe.getText().toString());
         setEnglisch(eingabe2.getText().toString());
         Toast.makeText(this, getDeutsch(), Toast.LENGTH_LONG).show();
