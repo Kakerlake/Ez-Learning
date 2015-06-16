@@ -16,7 +16,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="71dp"
-         />
+        android:minHeight="70dp"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignEnd="@+id/button2"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -25,28 +29,35 @@
         android:hint="Englisch"
         android:ems="10"
         android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
+        android:minHeight="70dp"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Nächste Karte"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="neueKarte" />
+        android:onClick="neueKarte"
+        android:height="70dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Fertig"
         android:id="@+id/button3"
         android:layout_alignBottom="@+id/button2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="fertig" />
+        android:onClick="fertig"
+        android:height="70dp" />
 
 </RelativeLayout>
