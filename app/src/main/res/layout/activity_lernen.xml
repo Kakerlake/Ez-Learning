@@ -12,18 +12,24 @@
         android:layout_height="wrap_content"
         android:text="Karteikarten"
         android:id="@+id/karten"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="110dp"
-        android:onClick="karten" />
+        android:onClick="karten"
+        android:height="100dp"
+        android:layout_above="@+id/schreiben"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Schreiben"
         android:id="@+id/schreiben"
-        android:layout_below="@+id/karten"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
-        android:onClick="schreiben" />
+        android:onClick="schreiben"
+        android:height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/karten"
+        android:layout_alignEnd="@+id/karten" />
 </RelativeLayout>

@@ -10,18 +10,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Deutsch"
+        android:hint="Deutsch"
         android:ems="10"
         android:id="@+id/editText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="71dp" />
+        android:layout_marginTop="71dp"
+         />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Englisch"
+        android:hint="Englisch"
         android:ems="10"
         android:id="@+id/editText2"
         android:layout_below="@+id/editText"
