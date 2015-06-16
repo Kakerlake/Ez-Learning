@@ -51,6 +51,8 @@ public class Neu extends ActionBarActivity {
         KarteiKarte karte = new KarteiKarte(eingabe.getText().toString(), eingabe2.getText().toString());
         karteiStappel.add(karte);
         Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
+        eingabe.setText("");
+        eingabe2.setText("");
 
 
 
