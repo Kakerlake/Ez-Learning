@@ -22,10 +22,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Englisch:"
+        android:hint="Englisch:"
         android:ems="10"
         android:id="@+id/editText3"
         android:layout_below="@+id/deutsch"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="151dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prüfen"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ignorieren"
+        android:id="@+id/button4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/deutsch"
+        android:layout_alignEnd="@+id/deutsch" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beenden"
+        android:id="@+id/button5"
+        android:layout_alignTop="@+id/button4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
