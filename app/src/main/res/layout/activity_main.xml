@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
@@ -11,18 +11,25 @@
         android:text="Lernen"
         android:id="@+id/lernen"
         android:onClick="lernen"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/neu"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:height="100dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Neue Karte"
         android:id="@+id/neu"
-        android:layout_below="@+id/lernen"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:onClick="neu" />
+        android:onClick="neu"
+        android:layout_above="@+id/loeschen"
+        android:layout_alignRight="@+id/lernen"
+        android:layout_alignEnd="@+id/lernen"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:height="100dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,17 +37,24 @@
         android:text="Löschen"
         android:id="@+id/loeschen"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="loeschen" />
+        android:onClick="loeschen"
+        android:layout_alignRight="@+id/neu"
+        android:layout_alignEnd="@+id/neu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:height="100dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stats"
         android:id="@+id/stats"
+        android:onClick="stats"
         android:layout_below="@+id/loeschen"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="71dp"
-        android:onClick="stats" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:height="100dp" />
 
 </RelativeLayout>
