@@ -16,22 +16,18 @@ public class KarteiKarte{
     public void setDeutsch(String deutsch){
         this.deutsch = deutsch;
     }
-
     public void setEnglisch(String englisch){
         this.englisch = englisch;
     }
-
     public void setWert(int wert) {
         this.wert = wert;
     }
-    public int wert() {
+    public int getWert() {
         return wert;
     }
-
     public String getDeutsch(){
         return deutsch;
     }
-//adsdasdasddthdghfghgfhgfhfhfhfghfgh
     public String getEnglisch(){
         return englisch;
     }

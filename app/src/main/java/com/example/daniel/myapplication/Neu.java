@@ -1,5 +1,6 @@
 package com.example.daniel.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -54,8 +55,14 @@ public class Neu extends ActionBarActivity {
         eingabe.setText("");
         eingabe2.setText("");
 
+    }
 
-
+    public void fertig(View arg0){
+        KarteiKarte karte = new KarteiKarte(eingabe.getText().toString(), eingabe2.getText().toString());
+        karteiStappel.add(karte);
+        Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 
