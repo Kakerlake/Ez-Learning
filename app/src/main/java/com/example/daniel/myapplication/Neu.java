@@ -8,24 +8,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class Neu extends ActionBarActivity {
-    String deutsch;
-    String englisch;
-    int wert;
+
     private EditText eingabe;
     private EditText eingabe2;
-    public Neu(){
-        wert = 0;
-
-    }
-
+    ArrayList<KarteiKarte> karteiStappel = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neu);
         eingabe = (EditText) findViewById(R.id.editText);
         eingabe2 = (EditText) findViewById(R.id.editText2);
+
     }
 
     @Override
@@ -50,27 +47,14 @@ public class Neu extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void neueKarte(View arg0){
-        setDeutsch(eingabe.getText().toString());
-        setEnglisch(eingabe2.getText().toString());
-        Toast.makeText(this, getDeutsch(), Toast.LENGTH_LONG).show();
-        Toast.makeText(this, getEnglisch(), Toast.LENGTH_LONG).show();
-    }
+    public void neueKarte(View arg0) {
+        KarteiKarte karte = new KarteiKarte(eingabe.getText().toString(), eingabe2.getText().toString());
+        karteiStappel.add(karte);
+        Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
 
 
-    public void setDeutsch(String deutsch){
-        this.deutsch = deutsch;
-    }
 
-    public void setEnglisch(String englisch){
-        this.englisch = englisch;
-    }
-
-    public String getDeutsch(){
-        return deutsch;
-    }
-
-    public String getEnglisch(){
-        return englisch;
     }
 }
+
+
