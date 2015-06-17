@@ -4,15 +4,43 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class stats extends ActionBarActivity {
+    MyDBHandlerStats dbHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
+        dbHandler=new MyDBHandlerStats(this,null,null,1);
+        dbHandler.maxToString();
+        String dbString = dbHandler.maxToString();
+        int dbLZeitAnzahl = dbHandler.lZeitToInt();
+        int dbKZeitAnzahl = dbHandler.lZeitToInt();
+        int nGelerntAnzahl = dbHandler.nGelerntToInt();
+        int GelerntAnzahl = dbHandler.GelerntToInt();
+
+        int Anzahl = dbHandler.lZeitToInt();
+        Toast.makeText(this, dbString, Toast.LENGTH_LONG).show();
+        TextView textElement1 = (TextView) findViewById(R.id.Rechts7);
+        TextView textElement2 = (TextView) findViewById(R.id.Rechts1);
+        TextView textElement3 = (TextView) findViewById(R.id.Rechts2);
+        TextView textElement4 = (TextView) findViewById(R.id.Rechts3);
+        TextView textElement5 = (TextView) findViewById(R.id.Rechts4);
+
+        textElement1.setText(dbString);
+        textElement2.setText("" + dbLZeitAnzahl);
+        textElement3.setText("" + dbKZeitAnzahl);
+        textElement4.setText("" + nGelerntAnzahl);
+        textElement5.setText("" + GelerntAnzahl);
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

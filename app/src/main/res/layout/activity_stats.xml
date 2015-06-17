@@ -6,11 +6,143 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.daniel.myapplication.stats">
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentBottom="true"
+        android:text="Im Langzeitgedächtnis"
+        android:id="@+id/Links1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Im Kurzzeitgedächtnis"
+        android:id="@+id/Links2"
+        android:layout_below="@+id/Links1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Noch nicht gelernt"
+        android:id="@+id/Links3"
+        android:layout_below="@+id/Links2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anzahl gelernter worte"
+        android:id="@+id/Links4"
+        android:layout_below="@+id/Links3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anzahl Worte"
+        android:id="@+id/Links5"
+        android:layout_below="@+id/Links4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anzahl gelernter Worte in %"
+        android:id="@+id/Links6"
+        android:layout_below="@+id/Links5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meistgelerntes Wort"
+        android:id="@+id/Links7"
+        android:layout_below="@+id/Links6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Rechts1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:text="noch nicht gespielt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noch nicht gespielt"
+        android:id="@+id/Rechts2"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Rechts1"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noch nicht gespielt"
+        android:id="@+id/Rechts3"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Rechts2"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noch nicht gespielt"
+        android:id="@+id/Rechts4"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Rechts3"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noch nicht gespielt"
+        android:id="@+id/Rechts5"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Rechts4"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noch nicht gespielt"
+        android:id="@+id/Rechts6"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Rechts5"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="noch nicht gespielt"
+        android:id="@+id/Rechts7"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Rechts6"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
 </RelativeLayout>
