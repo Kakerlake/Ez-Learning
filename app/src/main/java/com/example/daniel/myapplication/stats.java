@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class stats extends ActionBarActivity {
     MyDBHandlerStats dbHandler;
 
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
