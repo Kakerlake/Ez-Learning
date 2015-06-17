@@ -17,26 +17,32 @@ public class stats extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
         dbHandler=new MyDBHandlerStats(this,null,null,1);
-        dbHandler.maxToString();
+
         String dbString = dbHandler.maxToString();
         int dbLZeitAnzahl = dbHandler.lZeitToInt();
         int dbKZeitAnzahl = dbHandler.lZeitToInt();
         int nGelerntAnzahl = dbHandler.nGelerntToInt();
-        int GelerntAnzahl = dbHandler.GelerntToInt();
+        double GelerntAnzahl = dbHandler.GelerntToInt();
+        double totalAnzahl = dbHandler.totalToInt();
+        double prozent = ((GelerntAnzahl/totalAnzahl)*100);
+        prozent = Math.round(prozent);
 
-        int Anzahl = dbHandler.lZeitToInt();
-        Toast.makeText(this, dbString, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"" + GelerntAnzahl*100/totalAnzahl, Toast.LENGTH_LONG).show();
         TextView textElement1 = (TextView) findViewById(R.id.Rechts7);
         TextView textElement2 = (TextView) findViewById(R.id.Rechts1);
         TextView textElement3 = (TextView) findViewById(R.id.Rechts2);
         TextView textElement4 = (TextView) findViewById(R.id.Rechts3);
         TextView textElement5 = (TextView) findViewById(R.id.Rechts4);
+        TextView textElement6 = (TextView) findViewById(R.id.Rechts5);
+        TextView textElement7 = (TextView) findViewById(R.id.Rechts6);
 
         textElement1.setText(dbString);
         textElement2.setText("" + dbLZeitAnzahl);
         textElement3.setText("" + dbKZeitAnzahl);
         textElement4.setText("" + nGelerntAnzahl);
         textElement5.setText("" + GelerntAnzahl);
+        textElement6.setText("" + totalAnzahl);
+        textElement7.setText(prozent + "%");
 
     }
 

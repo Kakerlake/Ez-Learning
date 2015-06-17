@@ -105,12 +105,24 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
     public int GelerntToInt() {
 
         SQLiteDatabase db = getWritableDatabase();
-        String count="SELECT id FROM "+ TABLE_WORDS + " WHERE " + COLUMN_WERT + " < " + 0;
+        String count="SELECT id FROM "+ TABLE_WORDS + " WHERE " + COLUMN_WERT + " != " + 0;
         Cursor c = db.rawQuery(count, null);
         c.moveToFirst();
         int GelerntAnzahl = c.getCount();
         db.close();
         return GelerntAnzahl;
     }
+
+    public int totalToInt() {
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count="SELECT id FROM "+ TABLE_WORDS ;
+        Cursor c = db.rawQuery(count, null);
+        c.moveToFirst();
+        int totalAnzahl = c.getCount();
+        db.close();
+        return totalAnzahl;
+    }
+
 
 }
