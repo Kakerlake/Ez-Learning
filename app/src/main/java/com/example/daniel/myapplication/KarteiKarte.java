@@ -11,7 +11,7 @@ public class KarteiKarte{
     public KarteiKarte(String deutsch, String englisch) {
         this.deutsch = deutsch;
         this.englisch = englisch;
-        wert = 0;
+        this.wert = 0;
 
     }
     public void setId(int id) {

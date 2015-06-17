@@ -28,7 +28,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         String query = "CREATE TABLE " + TABLE_WORDS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_DEUTSCH + " TEXT, " + COLUMN_ENGLISH +"TEXT, " + COLUMN_WERT+"INTEGER" +");";
+                COLUMN_DEUTSCH + " TEXT, " + COLUMN_ENGLISH + " TEXT, " + COLUMN_WERT+" INTEGER" +");";
         db.execSQL(query);
     }
 
@@ -56,25 +56,24 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public String databaseToString() {
         String dbString="";
         SQLiteDatabase db = getWritableDatabase();
-        String query ="SELECT * FROM "+ TABLE_WORDS+ "Where 1";
+        String query ="SELECT deutsch FROM "+ TABLE_WORDS+ "Where id =1";
 
         //Cursor points to a location in your results
-        Cursor  c =db.rawQuery(query, null);
+       // Cursor  c =db.rawQuery(query, null);
 
         //Move to the first row in your results
-        c.moveToFirst();
+        //c.moveToFirst();
 
-        while (!c.isAfterLast()) {
+      /*  while (!c.isAfterLast()) {
             if (c.getString(c.getColumnIndex("deutsch")) != null) {
                 dbString += c.getString(c.getColumnIndex("deutsch"));
-                dbString += "\n";
-            } else if (c.getString(c.getColumnIndex("english")) != null) {
-                dbString += c.getString(c.getColumnIndex("english"));
                 dbString += "\n";
             }
 
             c.moveToNext();
-        }
+        }*/
+       db.execSQL(query);
+        dbString=query;
         db.close();
         return dbString;
     }

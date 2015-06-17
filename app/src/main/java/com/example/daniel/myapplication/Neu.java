@@ -15,10 +15,8 @@ import java.util.ArrayList;
 
 public class Neu extends ActionBarActivity {
 
-    private EditText eingabe;
-    private EditText eingabe2;
-    EditText UserInput;
-    TextView UserText;
+     EditText eingabe;
+     EditText eingabe2;
     MyDBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +24,7 @@ public class Neu extends ActionBarActivity {
         setContentView(R.layout.activity_neu);
         eingabe = (EditText) findViewById(R.id.editText);
         eingabe2 = (EditText) findViewById(R.id.editText2);
-        dbHandler=new MyDBHandler(this, null, null, 1);
+        dbHandler=new MyDBHandler(this,null,null,1);
 
     }
 
@@ -55,17 +53,20 @@ public class Neu extends ActionBarActivity {
     public void neueKarte(View arg0) {
         KarteiKarte karte = new KarteiKarte(eingabe.getText().toString(), eingabe2.getText().toString());
        dbHandler.addWords(karte);
+
         Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
         eingabe.setText("");
         eingabe2.setText("");
-        printDatabase();
+       // printDatabase();
 
     }
 
     public void fertig(View arg0){
         KarteiKarte karte = new KarteiKarte(eingabe.getText().toString(), eingabe2.getText().toString());
         dbHandler.addWords(karte);
-        Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
+        String dbString = dbHandler.databaseToString();
+        Toast.makeText(this, dbString, Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
