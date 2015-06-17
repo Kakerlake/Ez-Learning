@@ -61,7 +61,7 @@ public class Neu extends ActionBarActivity {
 
     }
 
-    public void fertig(View arg0){
+   /* public void fertig(View arg0){
         KarteiKarte karte = new KarteiKarte(eingabe.getText().toString(), eingabe2.getText().toString());
         dbHandler.addWords(karte);
         //String dbString = dbHandler.databaseToString();
@@ -74,6 +74,7 @@ public class Neu extends ActionBarActivity {
         String dbString = dbHandler.databaseToString();
         Toast.makeText(this, dbString, Toast.LENGTH_LONG).show();
     }
+    */ //Nutzloser Button
 }
 
 
