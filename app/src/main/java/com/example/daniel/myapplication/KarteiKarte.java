@@ -3,16 +3,20 @@ package com.example.daniel.myapplication;
 import android.widget.Toast;
 
 public class KarteiKarte{
-        String deutsch;
-        String englisch;
-        int wert;
+
+    private int id;
+       private String deutsch;
+       private String englisch;
+        private int wert;
     public KarteiKarte(String deutsch, String englisch) {
         this.deutsch = deutsch;
         this.englisch = englisch;
         wert = 0;
 
     }
-
+    public void setId(int id) {
+        this.id=id;
+    }
     public void setDeutsch(String deutsch){
         this.deutsch = deutsch;
     }
@@ -30,6 +34,9 @@ public class KarteiKarte{
     }
     public String getEnglisch(){
         return englisch;
+    }
+    public int getId() {
+        return this.id;
     }
 }
 
