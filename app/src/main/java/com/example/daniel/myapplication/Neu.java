@@ -67,8 +67,8 @@ public class Neu extends ActionBarActivity {
         String dbString = dbHandler.databaseToString();
         Toast.makeText(this, dbString, Toast.LENGTH_LONG).show();
       //  Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
     }
     public void printDatabase(){
         String dbString = dbHandler.databaseToString();

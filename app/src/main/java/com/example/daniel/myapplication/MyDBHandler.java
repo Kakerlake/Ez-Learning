@@ -56,15 +56,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public String databaseToString() {
         String dbString="";
         SQLiteDatabase db = getWritableDatabase();
-        String query ="SELECT deutsch FROM "+ TABLE_WORDS+ "Where id =1";
+        String query ="SELECT deutsch FROM "+ TABLE_WORDS+ " Where 1";
 
         //Cursor points to a location in your results
-       // Cursor  c =db.rawQuery(query, null);
+        Cursor  c =db.rawQuery(query, null);
 
         //Move to the first row in your results
-        //c.moveToFirst();
-
-      /*  while (!c.isAfterLast()) {
+        c.moveToFirst();
+    dbString=c.getString(c.getColumnIndex("deutsch"));
+       /* while (!c.isAfterLast()) {
             if (c.getString(c.getColumnIndex("deutsch")) != null) {
                 dbString += c.getString(c.getColumnIndex("deutsch"));
                 dbString += "\n";
@@ -72,8 +72,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
             c.moveToNext();
         }*/
-       db.execSQL(query);
-        dbString=query;
+
         db.close();
         return dbString;
     }
