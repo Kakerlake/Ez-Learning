@@ -26,7 +26,8 @@
         android:ems="10"
         android:id="@+id/editText3"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/deutsch"
+        android:layout_alignEnd="@+id/deutsch" />
 
 
     <Button
@@ -55,4 +56,12 @@
         android:layout_alignTop="@+id/button4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button" />
 </RelativeLayout>

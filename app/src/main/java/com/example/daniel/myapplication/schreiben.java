@@ -2,12 +2,14 @@ package com.example.daniel.myapplication;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ public class schreiben extends ActionBarActivity {
     private int zaehler=0;
     String woerter[];
     EditText edit;
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class schreiben extends ActionBarActivity {
         setContentView(R.layout.activity_schreiben);
         deutsch = (TextView) findViewById(R.id.deutsch);
         edit =(EditText) findViewById(R.id.editText3);
+        image = (ImageView) findViewById(R.id.imageView);
         dbHandler = new MyDBHandler(this, null, null, 1);
         this.woerter=dbHandler.lernen();
 
@@ -65,17 +69,24 @@ public class schreiben extends ActionBarActivity {
                 i++;
                 query2 = "UPDATE woerter SET werte= "+i +" WHERE deutsch='" + deutsch.getText().toString()+"'";
                 dbHandler.update(query2);
-                Toast.makeText(this,"richtig", Toast.LENGTH_LONG).show();
+                image.setVisibility(View.VISIBLE);
+                image.setImageResource(R.drawable.checkok);
 
             }
             else if(result==false) {
-                Toast.makeText(this,"falsch", Toast.LENGTH_LONG).show();
+                image.setImageResource(R.drawable.checkx);
             }
             deutsch.setText(woerter[zaehler]);
 
 
             zaehler++;
             edit.setText("");
+            new Handler().postDelayed(new Runnable(){
+                public void run() {
+                    image.setVisibility(View.INVISIBLE);
+                }
+            }, 1000);
+
         }
         else {
 
