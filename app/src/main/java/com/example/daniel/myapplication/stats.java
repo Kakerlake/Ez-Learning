@@ -22,10 +22,10 @@ public class stats extends ActionBarActivity {
         int dbLZeitAnzahl = dbHandler.lZeitToInt();
         int dbKZeitAnzahl = dbHandler.lZeitToInt();
         int nGelerntAnzahl = dbHandler.nGelerntToInt();
-        double GelerntAnzahl = dbHandler.GelerntToInt();
-        double totalAnzahl = dbHandler.totalToInt();
-        double prozent = ((GelerntAnzahl/totalAnzahl)*100);
-        prozent = Math.round(prozent);
+        int GelerntAnzahl = dbHandler.GelerntToInt();
+        int totalAnzahl = dbHandler.totalToInt();
+        float prozent = (GelerntAnzahl*100)/totalAnzahl;
+       // prozent = Math.round(prozent);
 
         //Toast.makeText(this,"" + GelerntAnzahl*100/totalAnzahl, Toast.LENGTH_LONG).show();
         TextView textElement1 = (TextView) findViewById(R.id.Rechts7);

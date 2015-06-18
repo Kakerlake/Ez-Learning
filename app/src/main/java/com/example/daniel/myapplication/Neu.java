@@ -57,6 +57,7 @@ public class Neu extends ActionBarActivity {
         Toast.makeText(this, "Karte erfolgreich gespeichert", Toast.LENGTH_LONG).show();
         eingabe.setText("");
         eingabe2.setText("");
+        eingabe.requestFocus();
        // printDatabase();
 
     }
