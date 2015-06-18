@@ -25,9 +25,8 @@
         android:hint="Englisch:"
         android:ems="10"
         android:id="@+id/editText3"
-        android:layout_below="@+id/deutsch"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="151dp"/>
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 
     <Button
@@ -46,8 +45,7 @@
         android:text="Ignorieren"
         android:id="@+id/button4"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/deutsch"
-        android:layout_alignEnd="@+id/deutsch" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
