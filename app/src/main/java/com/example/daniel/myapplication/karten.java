@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,9 +16,9 @@ public class karten extends ActionBarActivity {
     MyDBHandler dbHandler;
     TextView eins ;
     String text2;
-    Button richtig;
+    ImageView richtig;
     Button drei;
-    Button falsch;
+    ImageView falsch;
     View v;
 
 
@@ -24,11 +26,14 @@ public class karten extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_karten);
+
         dbHandler=new MyDBHandler(this,null,null,1);
         eins = (TextView) findViewById(R.id.textView);
-        richtig = (Button) findViewById(R.id.richtig);
+        richtig = (ImageView) findViewById(R.id.richtig);
         drei = (Button) findViewById(R.id.button3);
-        falsch = (Button) findViewById(R.id.falsch);
+        falsch = (ImageView) findViewById(R.id.falsch);
+        richtig.setImageResource(R.drawable.checkok);
+        falsch.setImageResource(R.drawable.checkx);
         richtig.setClickable(false);
         falsch.setClickable(false);
         next(v);
