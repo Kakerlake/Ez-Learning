@@ -57,22 +57,18 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteKarte(String Word) {
-        String dbString = "Word";
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_WORDS + "WHERE" + COLUMN_DEUTSCH + "=\"" + dbString + "\"" + " OR WHERE  " + COLUMN_ENGLISH + "=\"" + dbString + "\";");
-
-    }
-
-    public String maxToString() {
+   public String maxToString() {
         String dbMaxString;
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT english FROM woerter ORDER BY werte DESC limit 1 ";
         Cursor c = db.rawQuery(query, null);
-        c.moveToFirst();
-        dbMaxString = c.getString(c.getColumnIndex("english"));
-        db.close();
-        return dbMaxString;
+        if(c.moveToFirst()) {
+
+            dbMaxString = c.getString(c.getColumnIndex("english"));
+            db.close();
+            return dbMaxString;
+        }
+        return "noch nicht gelernt";
     }
 
 
@@ -81,10 +77,13 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " >= " + LANGZEITGEDAECHTNIS;
         Cursor c = db.rawQuery(count, null);
-        c.moveToFirst();
-        int dbLZeitAnzahl = c.getCount();
-        db.close();
-        return dbLZeitAnzahl;
+        if(c.moveToFirst()) {
+
+            int dbLZeitAnzahl = c.getCount();
+            db.close();
+            return dbLZeitAnzahl;
+        }
+        return 0;
     }
 
     public int kZeitToInt() {
@@ -92,10 +91,13 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " >= " + KURZZEITGEDAECHTNIS;
         Cursor c = db.rawQuery(count, null);
-        c.moveToFirst();
-        int dbKZeitAnzahl = c.getCount();
-        db.close();
-        return dbKZeitAnzahl;
+        if (c.moveToFirst()) {
+
+            int dbKZeitAnzahl = c.getCount();
+            db.close();
+            return dbKZeitAnzahl;
+        }
+        return 0;
     }
 
     public int nGelerntToInt() {
@@ -103,21 +105,28 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " == " + 0;
         Cursor c = db.rawQuery(count, null);
-        c.moveToFirst();
-        int nGelerntAnzahl = c.getCount();
-        db.close();
-        return nGelerntAnzahl;
+        if (c.moveToFirst()) {
+
+            int nGelerntAnzahl = c.getCount();
+            db.close();
+            return nGelerntAnzahl;
+        }
+        return 0;
     }
 
     public int GelerntToInt() {
 
-        SQLiteDatabase db = getWritableDatabase();
-        String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " != " + 0;
-        Cursor c = db.rawQuery(count, null);
-        c.moveToFirst();
-        int GelerntAnzahl = c.getCount();
-        db.close();
-        return GelerntAnzahl;
+
+            SQLiteDatabase db = getWritableDatabase();
+            String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " != " + 0;
+            Cursor c = db.rawQuery(count, null);
+        if(c.moveToFirst()) {
+
+            int GelerntAnzahl = c.getCount();
+            db.close();
+            return GelerntAnzahl;
+        }
+        return 0;
     }
 
     public int totalToInt() {
@@ -125,10 +134,14 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String count = "SELECT id FROM " + TABLE_WORDS;
         Cursor c = db.rawQuery(count, null);
-        c.moveToFirst();
-        int totalAnzahl = c.getCount();
-        db.close();
-        return totalAnzahl;
+        if(c.moveToFirst()) {
+
+            int totalAnzahl = c.getCount();
+            db.close();
+            return totalAnzahl;
+        }
+        return 0;
+
     }
 
     public ArrayList loeschenAusgabe() {

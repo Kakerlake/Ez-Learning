@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class stats extends ActionBarActivity {
     MyDBHandlerStats dbHandler;
+    float prozent;
 
 //
     @Override
@@ -18,14 +19,19 @@ public class stats extends ActionBarActivity {
         setContentView(R.layout.activity_stats);
         dbHandler=new MyDBHandlerStats(this,null,null,1);
 
-        String dbString = dbHandler.maxToString();
-        int dbLZeitAnzahl = dbHandler.lZeitToInt();
+       String dbString = dbHandler.maxToString();
+       int dbLZeitAnzahl = dbHandler.lZeitToInt();
         int dbKZeitAnzahl = dbHandler.lZeitToInt();
         int nGelerntAnzahl = dbHandler.nGelerntToInt();
         int GelerntAnzahl = dbHandler.GelerntToInt();
         int totalAnzahl = dbHandler.totalToInt();
-        float prozent = (GelerntAnzahl*100)/totalAnzahl;
-       // prozent = Math.round(prozent);
+       if(totalAnzahl != 0) {
+           prozent = (GelerntAnzahl * 100) / totalAnzahl;
+           prozent = Math.round(prozent);
+       }
+        else{
+
+       }
 
         //Toast.makeText(this,"" + GelerntAnzahl*100/totalAnzahl, Toast.LENGTH_LONG).show();
         TextView textElement1 = (TextView) findViewById(R.id.Rechts7);
@@ -36,7 +42,7 @@ public class stats extends ActionBarActivity {
         TextView textElement6 = (TextView) findViewById(R.id.Rechts5);
         TextView textElement7 = (TextView) findViewById(R.id.Rechts6);
 
-        textElement1.setText(dbString);
+        //textElement1.setText(dbString);
         textElement2.setText("" + dbLZeitAnzahl);
         textElement3.setText("" + dbKZeitAnzahl);
         textElement4.setText("" + nGelerntAnzahl);
