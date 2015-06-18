@@ -34,10 +34,7 @@ public class loeschen extends ActionBarActivity {
 
         listView.setTextFilterEnabled(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // When clicked, show a toast with the TextView text
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 dbHandler.loeschenMain("" + ((TextView) view).getText());
 
                 adapter.clear();
