@@ -27,7 +27,8 @@
         android:id="@+id/editText3"
         android:layout_below="@+id/deutsch"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="151dp" />
+        android:layout_marginTop="151dp"/>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -36,7 +37,8 @@
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="buttonClicked" />
 
     <Button
         android:layout_width="wrap_content"

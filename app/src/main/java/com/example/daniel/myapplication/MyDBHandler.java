@@ -18,6 +18,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_DEUTSCH = "deutsch";
     public static final String COLUMN_ENGLISH= "english";
     public static final String COLUMN_WERT = "werte";
+    public int anzahl;
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -83,19 +84,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         //Cursor points to a location in your results
         Cursor  c =db.rawQuery(query, null);
 
-        //Move to the first row in your results
 
-/*
-        while (!c.isAfterLast()) {
-            if (c.getString(c.getCount()) != null) {
-                dbString += c.getString(c.getColumnIndex("deutsch"));
-                dbString += "\n";
-            }
-
-            c.moveToNext();
-        }
-
-*/
         c.moveToFirst();
         dbString = c.getString(c.getColumnIndex(sprache));
         c.close();
@@ -110,4 +99,50 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public String[] lernen() {
+        int zaehler=0;
+        String woerter[];
+        SQLiteDatabase db = getWritableDatabase();
+        String count="SELECT id FROM "+ TABLE_WORDS;
+        String query = "SELECT * FROM "+ TABLE_WORDS;
+        Cursor c=db.rawQuery(count, null);
+        anzahl= c.getCount();
+
+
+        woerter = new String[anzahl];
+        Cursor all=db.rawQuery(query,null);
+        all.moveToFirst();
+
+        while (!all.isAfterLast()) {
+            if (all.getString(all.getColumnIndex("deutsch")) != null) {
+                woerter[zaehler]= all.getString(all.getColumnIndex("deutsch"));
+                zaehler++;
+
+            }
+
+            all.moveToNext();
+        }
+        return woerter;
+    }
+    public boolean checkEingabe(String deutschtext, String eingabe) {
+        int i=0;
+        boolean result=false;
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_WORDS;
+        Cursor all = db.rawQuery(query, null);
+        all.moveToFirst();
+
+        while (!all.isAfterLast() ) {
+            if (all.getString(all.getColumnIndex("deutsch")) != null) {
+                if (all.getString(all.getColumnIndex("deutsch")).equals(deutschtext) && all.getString(all.getColumnIndex("english")).equals(eingabe)) {
+                    result = true;
+
+
+                }
+            }
+            all.moveToNext();
+
+        }
+        return result;
+    }
 }
