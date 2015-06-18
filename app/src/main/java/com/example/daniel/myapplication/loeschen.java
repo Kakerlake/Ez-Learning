@@ -37,7 +37,7 @@ public class loeschen extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // When clicked, show a toast with the TextView text
-                Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+
                 dbHandler.loeschenMain("" + ((TextView) view).getText());
 
                 adapter.clear();
@@ -49,8 +49,11 @@ public class loeschen extends ActionBarActivity {
     }
 
     public void update (){
-        Intent intent = new Intent(this, loeschen.class);
+        Intent intent = new Intent(this, MainActivity.class);
+
         startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Alle Daten erfolgreich geloescht", Toast.LENGTH_SHORT).show();
+
 
     }
 
