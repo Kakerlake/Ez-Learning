@@ -1,12 +1,18 @@
 package com.example.daniel.myapplication;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,9 +28,29 @@ public class loeschen extends ActionBarActivity {
         dbHandler=new MyDBHandlerStats(this,null,null,1);
         results =  dbHandler.loeschenAusgabe();
         ListView listView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,
+        final ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, results);
         listView.setAdapter(adapter);
+
+        listView.setTextFilterEnabled(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // When clicked, show a toast with the TextView text
+                Toast.makeText(getApplicationContext(),((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+                dbHandler.loeschenMain("" + ((TextView) view).getText());
+
+                adapter.clear();
+                ArrayList<String> resultsUpdate = dbHandler.loeschenAusgabe();
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+    public void update (){
+        Intent intent = new Intent(this, loeschen.class);
+        startActivity(intent);
 
     }
 
@@ -32,6 +58,10 @@ public class loeschen extends ActionBarActivity {
         ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, results);
 
+    }
+    public void deleteAll(View arg0){
+        dbHandler.allesLoeschen();
+        update();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

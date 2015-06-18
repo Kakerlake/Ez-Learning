@@ -139,9 +139,18 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
             do {
                 String deutsch = c.getString(c.getColumnIndex("deutsch"));
                 String english = c.getString(c.getColumnIndex("english"));
-                results.add("Deutsch: " + deutsch + " | English: " + english);
+                results.add(english);
             } while (c.moveToNext());
         }
         return results;
+    }
+    public void loeschenMain(String position){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM woerter WHERE " + COLUMN_ENGLISH + " == " + "'" + (position) + "'");
+
+    }
+    public void allesLoeschen(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM woerter ");
     }
 }
