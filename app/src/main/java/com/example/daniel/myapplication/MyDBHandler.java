@@ -50,7 +50,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void  deleteKarte(String Word) {
         String dbString="Word";
         SQLiteDatabase db =getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_WORDS + "WHERE" + COLUMN_DEUTSCH + "=\"" + dbString + "\""+ " OR WHERE  " + COLUMN_ENGLISH + "=\"" + dbString + "\";");
+        db.execSQL("DELETE FROM " + TABLE_WORDS + "WHERE" + COLUMN_DEUTSCH + "=\"" + dbString + "\"" + " OR WHERE  " + COLUMN_ENGLISH + "=\"" + dbString + "\";");
 
     }
     public String databaseToString() {
@@ -75,6 +75,39 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         db.close();
         return dbString;
+    }
+
+    public String kartenAusgabe(String query, String sprache) {
+        String dbString="";
+        SQLiteDatabase db = getWritableDatabase();
+        //Cursor points to a location in your results
+        Cursor  c =db.rawQuery(query, null);
+
+        //Move to the first row in your results
+
+/*
+        while (!c.isAfterLast()) {
+            if (c.getString(c.getCount()) != null) {
+                dbString += c.getString(c.getColumnIndex("deutsch"));
+                dbString += "\n";
+            }
+
+            c.moveToNext();
+        }
+
+*/
+        c.moveToFirst();
+        dbString = c.getString(c.getColumnIndex(sprache));
+        c.close();
+
+
+        return dbString;
+    }
+
+    public void update(String query){
+
+        SQLiteDatabase db= getWritableDatabase();
+        db.execSQL(query);
     }
 
 }
