@@ -37,7 +37,7 @@ public class loeschen extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // When clicked, show a toast with the TextView text
-                Toast.makeText(getApplicationContext(),((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
                 dbHandler.loeschenMain("" + ((TextView) view).getText());
 
                 adapter.clear();
@@ -59,15 +59,9 @@ public class loeschen extends ActionBarActivity {
                 android.R.layout.simple_list_item_1, results);
 
     }
-    public void deleteAll(View arg0){
+    public void deleteAll(View arg0) {
         dbHandler.allesLoeschen();
         update();
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_loeschen, menu);
-        return true;
     }
 
     @Override
