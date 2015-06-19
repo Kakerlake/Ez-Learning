@@ -54,35 +54,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_WORDS, null, values);
         db.close();
     }
-    public void  deleteKarte(String Word) {
-        String dbString="Word";
-        SQLiteDatabase db =getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_WORDS + "WHERE" + COLUMN_DEUTSCH + "=\"" + dbString + "\"" + " OR WHERE  " + COLUMN_ENGLISH + "=\"" + dbString + "\";");
 
-    }
-    public String databaseToString() {
-        String dbString="";
-        SQLiteDatabase db = getWritableDatabase();
-        String query ="SELECT deutsch FROM "+ TABLE_WORDS+ " Where 1";
-
-        //Cursor points to a location in your results
-        Cursor  c =db.rawQuery(query, null);
-
-        //Move to the first row in your results
-        c.moveToFirst();
-    dbString=c.getString(c.getColumnIndex("deutsch"));
-       /* while (!c.isAfterLast()) {
-            if (c.getString(c.getColumnIndex("deutsch")) != null) {
-                dbString += c.getString(c.getColumnIndex("deutsch"));
-                dbString += "\n";
-            }
-
-            c.moveToNext();
-        }*/
-
-        db.close();
-        return dbString;
-    }
 
     public String kartenAusgabe(String query, String sprache) {
         String dbString="";
@@ -244,7 +216,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(count, null);
         if (c.moveToFirst()) {
             do {
-                String deutsch = c.getString(c.getColumnIndex("deutsch"));
                 String english = c.getString(c.getColumnIndex("english"));
                 results.add(english);
             } while (c.moveToNext());
