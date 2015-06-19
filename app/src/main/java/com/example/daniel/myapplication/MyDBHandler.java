@@ -1,8 +1,5 @@
 package com.example.daniel.myapplication;
 
-/**
- * Created by Chefsehero on 17.06.2015.
- */
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -23,7 +20,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_WERT = "werte";
     private static final int LANGZEITGEDAECHTNIS = 20;
     private static final int KURZZEITGEDAECHTNIS = 10;
-    public int anzahl;
 
     public ArrayList<String> results = new ArrayList<String>();
 

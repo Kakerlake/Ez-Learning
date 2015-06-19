@@ -17,7 +17,6 @@ import android.widget.Toast;
 public class schreiben extends ActionBarActivity {
     TextView deutsch;
     MyDBHandler dbHandler;
-    private int zaehler=0;
     String text2;
     String text3;
     String query3;

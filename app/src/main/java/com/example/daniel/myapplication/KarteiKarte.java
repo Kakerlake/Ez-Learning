@@ -1,6 +1,5 @@
 package com.example.daniel.myapplication;
 
-import android.widget.Toast;
 
 public class KarteiKarte{
 

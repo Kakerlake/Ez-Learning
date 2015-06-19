@@ -2,17 +2,15 @@ package com.example.daniel.myapplication;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class stats extends ActionBarActivity {
     MyDBHandler dbHandler;
     float prozent;
 
-//
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +26,6 @@ public class stats extends ActionBarActivity {
        if(totalAnzahl != 0) {
            prozent = (GelerntAnzahl * 100) / totalAnzahl;
            prozent = Math.round(prozent);
-       }
-        else{
-
        }
 
         //Toast.makeText(this,"" + GelerntAnzahl*100/totalAnzahl, Toast.LENGTH_LONG).show();
