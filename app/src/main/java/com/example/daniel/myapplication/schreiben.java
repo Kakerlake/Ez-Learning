@@ -62,13 +62,19 @@ public class schreiben extends ActionBarActivity {
     public void next(View v){
 
         String query2="SELECT werte FROM woerter ORDER BY werte ASC";
-        text2 = dbHandler.kartenAusgabe(query2, "werte");
-        query2 = "SELECT deutsch FROM woerter WHERE werte = '"+ text2 +"' ORDER BY Random()";
-        text3 = dbHandler.kartenAusgabe(query2, "deutsch");
-        deutsch.setText("" + text3);
-          query3="SELECT english FROM woerter WHERE deutsch ='" + text3+"'";
-        text2 = dbHandler.kartenAusgabe(query3, "english");
-
+        if (dbHandler.kartenAusgabe(query2, "werte") != null) {
+            text2 = dbHandler.kartenAusgabe(query2, "werte");
+            query2 = "SELECT deutsch FROM woerter WHERE werte = '" + text2 + "' ORDER BY Random()";
+            text3 = dbHandler.kartenAusgabe(query2, "deutsch");
+            deutsch.setText("" + text3);
+            query3 = "SELECT english FROM woerter WHERE deutsch ='" + text3 + "'";
+            text2 = dbHandler.kartenAusgabe(query3, "english");
+        }
+        else{
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            Toast.makeText(this,"Keine Eintraege vorhanden", Toast.LENGTH_LONG).show();
+        }
 
     }
 

@@ -3,6 +3,7 @@ package com.example.daniel.myapplication;
 /**
  * Created by Chefsehero on 17.06.2015.
  */
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
@@ -63,12 +64,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor  c =db.rawQuery(query, null);
 
 
-        c.moveToFirst();
-        dbString = c.getString(c.getColumnIndex(sprache));
-        c.close();
+        if (c.moveToFirst()) {
+            dbString = c.getString(c.getColumnIndex(sprache));
+            c.close();
 
 
-        return dbString;
+            return dbString;
+        }
+        return null;
     }
 
     public void update(String query){
@@ -77,52 +80,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public String[] lernen() {
-        int zaehler=0;
-        String woerter[];
-        SQLiteDatabase db = getWritableDatabase();
-        String count="SELECT id FROM "+ TABLE_WORDS;
-        String query = "SELECT * FROM "+ TABLE_WORDS;
-        Cursor c=db.rawQuery(count, null);
-        anzahl= c.getCount();
 
-
-        woerter = new String[anzahl];
-        Cursor all=db.rawQuery(query,null);
-        all.moveToFirst();
-
-        while (!all.isAfterLast()) {
-            if (all.getString(all.getColumnIndex("deutsch")) != null) {
-                woerter[zaehler]= all.getString(all.getColumnIndex("deutsch"));
-                zaehler++;
-
-            }
-
-            all.moveToNext();
-        }
-        return woerter;
-    }
-    public boolean checkEingabe(String deutschtext, String eingabe) {
-        int i=0;
-        boolean result=false;
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_WORDS;
-        Cursor all = db.rawQuery(query, null);
-        all.moveToFirst();
-
-        while (!all.isAfterLast() ) {
-            if (all.getString(all.getColumnIndex("deutsch")) != null) {
-                if (all.getString(all.getColumnIndex("deutsch")).equals(deutschtext) && all.getString(all.getColumnIndex("english")).equals(eingabe)) {
-                    result = true;
-
-
-                }
-            }
-            all.moveToNext();
-
-        }
-        return result;
-    }
     public String maxToString() {
         String dbMaxString;
         SQLiteDatabase db = getWritableDatabase();

@@ -1,5 +1,6 @@
 package com.example.daniel.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -63,9 +64,15 @@ public class karten extends ActionBarActivity {
         String query2="SELECT werte FROM woerter ORDER BY werte ASC";
         text2 = dbHandler.kartenAusgabe(query2, "werte");
         query2 = "SELECT deutsch FROM woerter WHERE werte = '"+ text2 +"' ORDER BY Random()";
-        text2 = dbHandler.kartenAusgabe(query2, "deutsch");
-        eins.setText("" + text2);
-
+        if (text2 != null ) {
+            text2 = dbHandler.kartenAusgabe(query2, "deutsch");
+            eins.setText("" + text2);
+        }
+        else{
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            Toast.makeText(this,"Keine Eintraege vorhanden", Toast.LENGTH_LONG).show();
+        }
 
 
     }
