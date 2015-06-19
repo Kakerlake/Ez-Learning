@@ -119,6 +119,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
             int dbKZeitAnzahl = c.getCount();
             db.close();
+            dbKZeitAnzahl = dbKZeitAnzahl -lZeitToInt();
             return dbKZeitAnzahl;
         }
         return 0;
@@ -175,8 +176,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 String english = c.getString(c.getColumnIndex("english"));
-                String deutsch = c.getString(c.getColumnIndex("english"));
-                results.add(english + "\t\t\t\t" + deutsch);
+                String deutsch = c.getString(c.getColumnIndex("deutsch"));
+                results.add(deutsch + "\t\t\t\t" + english);
             } while (c.moveToNext());
         }
         return results;

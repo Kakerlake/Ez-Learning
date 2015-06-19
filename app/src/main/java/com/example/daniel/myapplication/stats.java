@@ -21,7 +21,7 @@ public class stats extends ActionBarActivity {
 
        String dbString = dbHandler.maxToString();
        int dbLZeitAnzahl = dbHandler.lZeitToInt();
-        int dbKZeitAnzahl = dbHandler.lZeitToInt();
+        int dbKZeitAnzahl = dbHandler.kZeitToInt();
         int nGelerntAnzahl = dbHandler.nGelerntToInt();
         int GelerntAnzahl = dbHandler.GelerntToInt();
         int totalAnzahl = dbHandler.totalToInt();
