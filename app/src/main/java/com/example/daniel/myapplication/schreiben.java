@@ -33,7 +33,7 @@ public class schreiben extends ActionBarActivity {
         this.woerter=dbHandler.lernen();
 
         deutsch.setText(woerter[zaehler]);
-        zaehler++;
+
     }
 
     @Override
@@ -58,8 +58,9 @@ public class schreiben extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     public void buttonClicked(View view) {
+        zaehler++;
         boolean result;
-        if (zaehler <= (dbHandler.anzahl)) {
+        boolean end=false;
 
             result= dbHandler.checkEingabe(deutsch.getText().toString(), edit.getText().toString());
             if(result) {
@@ -72,28 +73,71 @@ public class schreiben extends ActionBarActivity {
                 image.setVisibility(View.VISIBLE);
                 image.setImageResource(R.drawable.checkok);
 
+
+
             }
             else if(result==false) {
+                image.setVisibility(View.VISIBLE);
                 image.setImageResource(R.drawable.checkx);
+
             }
-            deutsch.setText(woerter[zaehler]);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                image.setVisibility(View.INVISIBLE);
+            }
+        }, 1000);
 
 
-            zaehler++;
-            edit.setText("");
-            new Handler().postDelayed(new Runnable(){
+
+
+        if(zaehler== woerter.length) {
+
+            new Handler().postDelayed(new Runnable() {
                 public void run() {
-                    image.setVisibility(View.INVISIBLE);
                 }
             }, 1000);
-
-        }
-        else {
-
+            Toast.makeText(this,"Fertig", Toast.LENGTH_LONG).show();
+            edit.setText("");
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-    }
+        else{
+            deutsch.setText(woerter[zaehler]);
+        edit.setText(""); }
 
+    }
+    public void button4Clicked(View v) {
+     String wort=dbHandler.kartenAusgabe("Select english from woerter where deutsch='" + deutsch.getText().toString() + "'", "english");
+      Toast.makeText(this, wort, Toast.LENGTH_SHORT).show();
+        image.setVisibility(View.VISIBLE);
+        image.setImageResource(R.drawable.checkx);
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                image.setVisibility(View.INVISIBLE);
+            }
+        }, 1000);
+        zaehler++;
+        if(zaehler<woerter.length) {
+            deutsch.setText(woerter[zaehler]);
+        }
+        else {
+            Toast.makeText(this,"Fertig", Toast.LENGTH_LONG).show();
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                }
+            }, 1000);
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+       /* Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+            }
+        }, 500);*/
+    }
 
 }

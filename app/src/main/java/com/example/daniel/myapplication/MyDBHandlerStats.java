@@ -166,4 +166,12 @@ public class MyDBHandlerStats extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM woerter ");
     }
+    /*public void bearbeiten() {
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT deutsch, english from woerter";
+        Cursor c = db.rawQuery(count, null);
+
+
+
+    }*/
 }
