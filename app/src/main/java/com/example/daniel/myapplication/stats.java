@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 
 public class stats extends ActionBarActivity {
-    MyDBHandlerStats dbHandler;
+    MyDBHandler dbHandler;
     float prozent;
 
 //
@@ -17,7 +17,7 @@ public class stats extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
-        dbHandler=new MyDBHandlerStats(this,null,null,1);
+        dbHandler=new MyDBHandler(this,null,null,1);
 
        String dbString = dbHandler.maxToString();
        int dbLZeitAnzahl = dbHandler.lZeitToInt();
@@ -42,7 +42,7 @@ public class stats extends ActionBarActivity {
         TextView textElement6 = (TextView) findViewById(R.id.Rechts5);
         TextView textElement7 = (TextView) findViewById(R.id.Rechts6);
 
-        //textElement1.setText(dbString);
+        textElement1.setText(dbString);
         textElement2.setText("" + dbLZeitAnzahl);
         textElement3.setText("" + dbKZeitAnzahl);
         textElement4.setText("" + nGelerntAnzahl);

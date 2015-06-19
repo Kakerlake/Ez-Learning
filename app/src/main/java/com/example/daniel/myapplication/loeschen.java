@@ -19,13 +19,13 @@ import java.util.ArrayList;
 
 public class loeschen extends ActionBarActivity {
 
-    MyDBHandlerStats dbHandler;
+    MyDBHandler dbHandler;
     private ArrayList<String> results = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loeschen);
-        dbHandler=new MyDBHandlerStats(this,null,null,1);
+        dbHandler=new MyDBHandler(this,null,null,1);
         results =  dbHandler.loeschenAusgabe();
         ListView listView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,

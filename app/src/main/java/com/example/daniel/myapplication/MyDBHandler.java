@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.content.Context;
 import android.content.ContentValues;
 
+import java.util.ArrayList;
+
 public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -18,7 +20,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_DEUTSCH = "deutsch";
     public static final String COLUMN_ENGLISH= "english";
     public static final String COLUMN_WERT = "werte";
+    private static final int LANGZEITGEDAECHTNIS = 20;
+    private static final int KURZZEITGEDAECHTNIS = 10;
     public int anzahl;
+
+    public ArrayList<String> results = new ArrayList<String>();
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -145,4 +151,115 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
         return result;
     }
+    public String maxToString() {
+        String dbMaxString;
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT english FROM woerter ORDER BY werte DESC";
+        Cursor c = db.rawQuery(query, null);
+        if(c.moveToFirst()) {
+
+            dbMaxString = c.getString(c.getColumnIndex("english"));
+            db.close();
+            return dbMaxString;
+        }
+        return "noch nicht gelernt";
+    }
+
+
+    public int lZeitToInt() {
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " >= " + LANGZEITGEDAECHTNIS;
+        Cursor c = db.rawQuery(count, null);
+        if(c.moveToFirst()) {
+
+            int dbLZeitAnzahl = c.getCount();
+            db.close();
+            return dbLZeitAnzahl;
+        }
+        return 0;
+    }
+
+    public int kZeitToInt() {
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " >= " + KURZZEITGEDAECHTNIS;
+        Cursor c = db.rawQuery(count, null);
+        if (c.moveToFirst()) {
+
+            int dbKZeitAnzahl = c.getCount();
+            db.close();
+            return dbKZeitAnzahl;
+        }
+        return 0;
+    }
+
+    public int nGelerntToInt() {
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " == " + 0;
+        Cursor c = db.rawQuery(count, null);
+        if (c.moveToFirst()) {
+
+            int nGelerntAnzahl = c.getCount();
+            db.close();
+            return nGelerntAnzahl;
+        }
+        return 0;
+    }
+
+    public int GelerntToInt() {
+
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT id FROM " + TABLE_WORDS + " WHERE " + COLUMN_WERT + " != " + 0;
+        Cursor c = db.rawQuery(count, null);
+        if(c.moveToFirst()) {
+
+            int GelerntAnzahl = c.getCount();
+            db.close();
+            return GelerntAnzahl;
+        }
+        return 0;
+    }
+
+    public int totalToInt() {
+
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT id FROM " + TABLE_WORDS;
+        Cursor c = db.rawQuery(count, null);
+        if(c.moveToFirst()) {
+
+            int totalAnzahl = c.getCount();
+            db.close();
+            return totalAnzahl;
+        }
+        return 0;
+
+    }
+
+    public ArrayList loeschenAusgabe() {
+        SQLiteDatabase db = getWritableDatabase();
+        String count = "SELECT deutsch, english from woerter";
+        Cursor c = db.rawQuery(count, null);
+        if (c.moveToFirst()) {
+            do {
+                String deutsch = c.getString(c.getColumnIndex("deutsch"));
+                String english = c.getString(c.getColumnIndex("english"));
+                results.add(english);
+            } while (c.moveToNext());
+        }
+        return results;
+    }
+    public void loeschenMain(String position){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM woerter WHERE " + COLUMN_ENGLISH + " == " + "'" + (position) + "'");
+
+    }
+    public void allesLoeschen(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM woerter ");
+    }
+
 }
+
