@@ -45,10 +45,10 @@
         android:layout_height="wrap_content"
         android:text="VERGESSEN"
         android:id="@+id/button4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:onClick="button4Clicked" />
+        android:onClick="button4Clicked"
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="30dp"
