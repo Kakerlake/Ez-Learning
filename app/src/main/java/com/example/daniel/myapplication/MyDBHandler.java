@@ -175,14 +175,16 @@ public class MyDBHandler extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 String english = c.getString(c.getColumnIndex("english"));
-                results.add(english);
+                String deutsch = c.getString(c.getColumnIndex("english"));
+                results.add(english + "\t\t\t\t" + deutsch);
             } while (c.moveToNext());
         }
         return results;
     }
     public void loeschenMain(String position){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM woerter WHERE " + COLUMN_ENGLISH + " == " + "'" + (position) + "'");
+        String[] split = position.split("\t\t\t\t");
+        db.execSQL("DELETE FROM woerter WHERE " + COLUMN_ENGLISH + " == '" + split[1] + "'");
 
     }
     public void allesLoeschen(){
