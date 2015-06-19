@@ -29,12 +29,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Noch nicht gelernt"
         android:id="@+id/Links3"
         android:layout_below="@+id/Links2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:autoText="false"
+        android:text="Noch nicht gelernt" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +70,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meistgelerntes Wort"
+        android:text="Bestgelerntes Wort"
         android:id="@+id/Links7"
         android:layout_below="@+id/Links6"
         android:layout_alignParentLeft="true"
@@ -83,13 +84,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="noch nicht gespielt" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noch nicht gespielt"
         android:id="@+id/Rechts2"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/Rechts1"
@@ -99,7 +98,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noch nicht gespielt"
         android:id="@+id/Rechts3"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/Rechts2"
@@ -109,7 +107,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noch nicht gespielt"
         android:id="@+id/Rechts4"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/Rechts3"
@@ -119,7 +116,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noch nicht gespielt"
         android:id="@+id/Rechts5"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/Rechts4"
@@ -129,7 +125,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noch nicht gespielt"
         android:id="@+id/Rechts6"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/Rechts5"
@@ -139,7 +134,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noch nicht gespielt"
         android:id="@+id/Rechts7"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/Rechts6"
